@@ -43,7 +43,7 @@
 -->
   {% if instance.tomcat_users is defined %}
   {% for tomcat_user in instance.tomcat_users %}
-  <user username="{{ tomcat_user.name }}" password"{{ tomcat_user.password }}" roles="{{ tomcat_user.roles }}"/>
+  <user username="{{ tomcat_user.name }}" password="{{ tomcat_user.password }}" roles="{{ tomcat_user.roles }}"/>
   {% endfor %}
   {% endif %}
 </tomcat-users>

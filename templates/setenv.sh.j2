@@ -7,13 +7,13 @@
 {% endif %}
 
 {% if instance.xmx is defined %}
-JAVA_OPTS="-Xmx{{ instance.xmx }} ${JAVA_OPTS}"
+JAVA_OPTS="${JAVA_OPTS} -Xmx{{ instance.xmx }}"
 {% else %}
-JAVA_OPTS="-Xmx{{ tomcat_xmx }} ${JAVA_OPTS}"
+JAVA_OPTS="${JAVA_OPTS} -Xmx{{ tomcat_xmx }}"
 {% endif %}
 
 {% if instance.xms is defined %}
-JAVA_OPTS="-Xms{{ instance.xms }} ${JAVA_OPTS}"
+JAVA_OPTS="${JAVA_OPTS} -Xms{{ instance.xms }}"
 {% else %}
-JAVA_OPTS="-Xms{{ tomcat_xms }} ${JAVA_OPTS}"
+JAVA_OPTS="${JAVA_OPTS} -Xms{{ tomcat_xms }}"
 {% endif %}

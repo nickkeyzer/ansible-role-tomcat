@@ -69,6 +69,17 @@
   notify:
     - restart tomcat instance
 
+- name: configure tomcat users - tomcat-users.xml
+  template:
+    src: tomcat-users.xml.j2
+    dest: "{{ tomcat_directory }}/{{ instance.name }}/conf/tomcat-users.xml"
+    mode: "0644"
+  when:
+    - instance.tomcat_users is defined
+    - instance.tomcat_users | length > 0
+  notify:
+    - restart tomcat instance
+
 - name: place neutral default page
   copy:
     content: "Please select an application by adding the context to the URL."

@@ -59,6 +59,16 @@
   notify:
     - restart tomcat instance
 
+- name: configure catalina properties - catalina.properties
+  template:
+    src: catalina.properties.j2
+    dest: "{{ tomcat_directory }}/{{ instance.name }}/conf/catalina.properties"
+    mode: "0644"
+  when:
+    - instance.shared_loader is defined
+  notify:
+    - restart tomcat instance
+
 - name: place neutral default page
   copy:
     content: "Please select an application by adding the context to the URL."
